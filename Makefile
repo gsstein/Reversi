@@ -1,11 +1,10 @@
 #Makefile
 
-a.out: compileAll
-	g++ *.o
-	rm -f *.o
-
-compileAll: include/*.h src/*.cpp
-	g++ -Iinclude/ -c src/*.cpp
+compile: bin
+	javac -cp src -d bin src/*.java
 
 run:
-	./a.out
+	java -cp bin Run
+
+bin:
+	mkdir bin
