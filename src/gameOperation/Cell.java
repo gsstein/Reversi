@@ -1,4 +1,4 @@
-
+package gameOperation;
 
 public class Cell implements Comparable {
     int xCord, yCord;

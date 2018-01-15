@@ -1,3 +1,5 @@
+package gameOperation;
+
 import java.util.Scanner;
 
 
@@ -35,6 +37,15 @@ public class Game {
         }
     }
 
+    public void setOfflineGame() {
+        StandardLogic sl = new StandardLogic(graphicProvider);
+        GameLogic gl = sl;
+        HumanPlayer p1 = new HumanPlayer(gl, graphicProvider, 'X');
+        Player hp1 = p1;
+        HumanPlayer p2 = new HumanPlayer(gl, graphicProvider, 'O');
+        Player hp2 = p2;
+        this.playOneMatch(gl, hp1, hp2);
+    }
 
     public void playOneMatch(GameLogic gl, Player p1, Player p2) {
         gl.startGame(p1, p2);

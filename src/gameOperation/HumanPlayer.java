@@ -1,3 +1,5 @@
+package gameOperation;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -39,7 +41,7 @@ public class HumanPlayer extends Player implements PlayerInterface {
         //Print moves
         display.displayPlayer(this);
         display.displayMessage(": it's your move.\nYour possible moves: ");
-        display.displayMoves(validMoves);
+        display.displayMoves(validMoves, gameLogic.getBoard());
 
         boolean validChoice = false;
         ArrayList<Integer> playerInput = new ArrayList<>();

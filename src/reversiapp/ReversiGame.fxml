@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<HBox fx:id="root" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversiapp.GameWindowController">
+   <children>
+       <VBox spacing="10">
+          <children>
+              <Button fx:id="butStart" text="Restart Match" textAlignment="CENTER" />
+              <Button fx:id="butForfeit" text="Forfeit Match" textAlignment="CENTER" />
+          </children>
+       </VBox>
+   </children>
+</HBox>

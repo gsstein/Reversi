@@ -1,3 +1,5 @@
+package gameOperation;
+
 import java.util.ArrayList;
 
 public class ConsoleGraphics implements GraphicInterface {
@@ -36,7 +38,7 @@ public class ConsoleGraphics implements GraphicInterface {
     }
 
     @Override
-    public void displayMoves(ArrayList<Cell> availablePositions) {
+    public void displayMoves(ArrayList<Cell> availablePositions, Board board) {
         System.out.println("");
         for (int i= 0; i < availablePositions.size(); i++) {
             availablePositions.get(i).printCell();
