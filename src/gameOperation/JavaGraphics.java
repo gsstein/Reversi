@@ -14,18 +14,22 @@ import reversiapp.BoardLayout;
 import java.io.IOException;
 import java.util.ArrayList;
 import reversiapp.SideGameMenu;
+import java.awt.print.Printable;
 /**
  * Created by dan on 1/13/18.
  */
 public class JavaGraphics extends BorderPane implements GraphicInterface {
     //Members
-    SideGameMenu sidePanel;
-    BoardLayout gameBoard;
+    private SideGameMenu sidePanel;
+    private BoardLayout gameBoard;
+    JavaLogic javaLogic = new JavaLogic(this);
 
-    JavaGraphics(SideGameMenu sideOptions, BoardLayout gameBoard) {
+    public JavaGraphics(SideGameMenu sideOptions, BoardLayout gameBoard) {
         this.sidePanel = sideOptions;
         this.gameBoard = gameBoard;
+        gameBoard.setLogic(javaLogic);
     }
+
     @Override
     public void displayBoard(Board b) {
         this.gameBoard.displayBoard(b);
@@ -47,6 +51,12 @@ public class JavaGraphics extends BorderPane implements GraphicInterface {
         this.sidePanel.setMessagesDisplay(message);
     }
 
+    public void displayMessage(ArrayList<Printable> msg) {
+        for(Printable o : msg) {
+            this.sidePanel.setMessagesDisplay(o);
+        }
+    }
+
     @Override
     public void displayPlayer(Player player) {
         this.sidePanel.setMessagesDisplay("Player " + player.getPlayerIdChar());
@@ -56,5 +66,9 @@ public class JavaGraphics extends BorderPane implements GraphicInterface {
     public void displayCoordinate(int a, int b) {
         //Not in use
     }
+
+//    public Cell getMove() {
+//        return gameBoard.getMove();
+//    }
 
 }

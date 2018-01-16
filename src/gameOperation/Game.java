@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 
 public class Game {
-    GraphicInterface graphicProvider;
-    Scanner scanner = new Scanner(System.in);
+    private GraphicInterface graphicProvider;
+    private Scanner scanner = new Scanner(System.in);
     
     public Game(GraphicInterface gi) {
         graphicProvider = gi;
@@ -44,7 +44,8 @@ public class Game {
         Player hp1 = p1;
         HumanPlayer p2 = new HumanPlayer(gl, graphicProvider, 'O');
         Player hp2 = p2;
-        this.playOneMatch(gl, hp1, hp2);
+        gl.startGame(p1, p2);
+        gl.playNextTurn();
     }
 
     public void playOneMatch(GameLogic gl, Player p1, Player p2) {

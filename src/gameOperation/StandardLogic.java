@@ -5,11 +5,23 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class StandardLogic extends GameLogic {
-    GraphicInterface graphicProvider;
-    int numCols, numRows;
-    Player player1, player2, currentPlayer;
-    Board myBoard;
-    ArrayList<Integer> lastPlay;
+    private GraphicInterface graphicProvider;
+    private int numCols, numRows;
+    private Player player1, player2, currentPlayer;
+    private Board myBoard;
+    private ArrayList<Integer> lastPlay;
+
+    public StandardLogic(GraphicInterface gi, int row, int col) {
+        lastPlay = new ArrayList<>();
+        this.graphicProvider = gi;
+        numCols = col;
+        numRows = row;
+        this.player1 = null;
+        this.player2 = null;
+        this.myBoard = null;
+        this.currentPlayer = null;
+        this.lastPlay.add(-1);
+    }
 
     public StandardLogic(GraphicInterface gi) {
         lastPlay = new ArrayList<>();
@@ -69,7 +81,7 @@ public class StandardLogic extends GameLogic {
     }
 
     public void playNextTurn() {
-        this.graphicProvider.displayMessage("Current board:\n\n");
+//        this.graphicProvider.displayMessage("Current board:\n\n");
         this.graphicProvider.displayBoard(myBoard);
         ArrayList<Cell> validPositions = this.getValidPositions(this.currentPlayer, this.myBoard);
         if(!validPositions.isEmpty()) {
@@ -102,6 +114,8 @@ public class StandardLogic extends GameLogic {
             }
         }
     }
+
+
 
     public Board setBoard() {
         this.myBoard = new Board(this.numRows, this.numCols);
