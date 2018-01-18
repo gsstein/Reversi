@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 abstract class Player implements PlayerInterface {
     char playerIdChar;
+    int score;
 
     public Player() {
 
@@ -28,4 +29,12 @@ abstract class Player implements PlayerInterface {
     public abstract void outOfPlays();
 
     public abstract ArrayList<Integer> makeMove();
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int s) {
+        score = s;
+    }
 }

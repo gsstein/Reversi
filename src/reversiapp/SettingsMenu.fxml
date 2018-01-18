@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversiapp.SettingsMenuController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="157.0">
+         <children>
+            <Label text="Colors">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Label>
+            <RadioButton fx:id="red_blue" mnemonicParsing="false" text="Red/Blue">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <toggleGroup>
+                  <ToggleGroup fx:id="colorToggleGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="purple_yellow" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Purple/Yellow" toggleGroup="$colorToggleGroup">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton fx:id="black_white" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" selected="true" text="Black/White" toggleGroup="$colorToggleGroup">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton fx:id="star_wars" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" selected="true" text="StarWars" toggleGroup="$colorToggleGroup">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton fx:id="pink_blue" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" selected="true" text="Pink/Blue" toggleGroup="$colorToggleGroup">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton fx:id="science1" layoutX="20.0" layoutY="131.0" mnemonicParsing="false" text="Science 1" toggleGroup="$colorToggleGroup">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton fx:id="science2" layoutX="20.0" layoutY="187.0" mnemonicParsing="false" text="Science 2" toggleGroup="$colorToggleGroup">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding></VBox>
+
+      <VBox prefHeight="400.0" prefWidth="129.0">
+   <children>
+               <Label text="Board Size">
+                  <padding>
+                     <Insets top="20.0" />
+                  </padding>
+               </Label>
+            <RadioButton mnemonicParsing="false" text="4x4" toggleGroup="$boardSizeToggleGroup" fx:id="x4">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <toggleGroup>
+                  <ToggleGroup fx:id="boardSizeToggleGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="6x6" toggleGroup="$boardSizeToggleGroup" fx:id="x6">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" selected="true" text="8x8" toggleGroup="$boardSizeToggleGroup" fx:id="x8">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton layoutX="10.0" layoutY="47.0" mnemonicParsing="false" text="10x10" toggleGroup="$boardSizeToggleGroup" fx:id="x10">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton layoutX="10.0" layoutY="75.0" mnemonicParsing="false" text="12x12" toggleGroup="$boardSizeToggleGroup" fx:id="x12">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton layoutX="10.0" layoutY="159.0" mnemonicParsing="false" text="14x14" toggleGroup="$boardSizeToggleGroup" fx:id="x14">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton layoutX="10.0" layoutY="103.0" mnemonicParsing="false" text="16x16" toggleGroup="$boardSizeToggleGroup" fx:id="x16">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton layoutX="10.0" layoutY="159.0" mnemonicParsing="false" text="18x18" toggleGroup="$boardSizeToggleGroup" fx:id="x18">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton layoutX="10.0" layoutY="187.0" mnemonicParsing="false" text="20x20" toggleGroup="$boardSizeToggleGroup" fx:id="x20">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+   </children>
+             <!--<fx:define>-->
+                 <!--<ToggleGroup fx:id="toggleGroup1"/>-->
+             <!--</fx:define>-->
+             <!--<RadioMenuItem text="rmenu"-->
+                            <!--selected="true"-->
+                            <!--toggleGroup="$toggleGroup1"></RadioMenuItem>-->
+
+
+      </VBox>
+
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="155.0">
+         <children>
+            <Label text="Starting Player">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </Label>
+            <RadioButton fx:id="standardOrder" mnemonicParsing="false" selected="true" text="Player1/Player2">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <toggleGroup>
+                  <ToggleGroup fx:id="playerToggleGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="inverseOrder" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Player2/Player1" toggleGroup="$playerToggleGroup">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </RadioButton>
+         </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="150.0">
+         <children>
+            <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="107.0" text="Save Settings">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+
+   </children>
+</HBox>

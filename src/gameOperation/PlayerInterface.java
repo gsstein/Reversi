@@ -15,4 +15,8 @@ public interface PlayerInterface {
     void outOfPlays();
 
     ArrayList<Integer> makeMove();
+
+    int getScore();
+
+    void setScore(int s);
 }

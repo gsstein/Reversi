@@ -5,10 +5,16 @@ import java.util.Scanner;
 
 public class Game {
     private GraphicInterface graphicProvider;
+    private StandardLogic standardLogic;
     private Scanner scanner = new Scanner(System.in);
-    
+
     public Game(GraphicInterface gi) {
         graphicProvider = gi;
+    }
+
+    public Game(GraphicInterface gi, StandardLogic sl) {
+        graphicProvider = gi;
+        standardLogic = sl;
     }
 
     public void start() {
@@ -23,7 +29,7 @@ public class Game {
 
             if(option == 1) {
                 StandardLogic sl = new StandardLogic(graphicProvider);
-                GameLogic gl = sl;
+                GameLogicInterface gl = sl;
                 HumanPlayer p1 = new HumanPlayer(gl, graphicProvider, 'X');
                 Player hp1 = p1;
                 HumanPlayer p2 = new HumanPlayer(gl, graphicProvider, 'O');
@@ -37,18 +43,7 @@ public class Game {
         }
     }
 
-    public void setOfflineGame() {
-        StandardLogic sl = new StandardLogic(graphicProvider);
-        GameLogic gl = sl;
-        HumanPlayer p1 = new HumanPlayer(gl, graphicProvider, 'X');
-        Player hp1 = p1;
-        HumanPlayer p2 = new HumanPlayer(gl, graphicProvider, 'O');
-        Player hp2 = p2;
-        gl.startGame(p1, p2);
-        gl.playNextTurn();
-    }
-
-    public void playOneMatch(GameLogic gl, Player p1, Player p2) {
+    public void playOneMatch(GameLogicInterface gl, Player p1, Player p2) {
         gl.startGame(p1, p2);
         do {
             gl.playNextTurn();

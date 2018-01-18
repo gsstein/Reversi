@@ -17,4 +17,8 @@ public interface GameLogicInterface {
     boolean isPositionValid(Cell c, Player player, Board gameBoard);
     //Can be overridden if rules are defined differently
     ArrayList<Cell> generalCheck(Board gameBoard, Cell start, char target, int rowDif, int colDif);
+    int getPlayerOneScore();
+    int getPlayerTwoScore();
+    void makeMove(int r, int c);
+    void changeTurns();
 }

@@ -3,12 +3,12 @@ package gameOperation;
 import java.util.ArrayList;
 
 public class MachinePlayer extends Player {
-    GameLogic currentGameLogic;
+    GameLogicInterface currentGameLogic;
     GraphicInterface graphicProvider;
     char value;
     
 
-    public MachinePlayer(GameLogic gl, GraphicInterface gi, char v) {
+    public MachinePlayer(GameLogicInterface gl, GraphicInterface gi, char v) {
         currentGameLogic = gl;
         graphicProvider = gi;
         value = v;

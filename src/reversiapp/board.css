@@ -1,0 +1,13 @@
+.button {
+            fx-background-radius: 5em; +
+            -fx-min-width: 10px; +
+            -fx-min-height: 10px; +
+            -fx-max-width: 30x; +
+            -fx-max-height: 30px;
+            );
+}
+
+.button:hover {
+
+    -fx-background-color: #00ff00;
+}

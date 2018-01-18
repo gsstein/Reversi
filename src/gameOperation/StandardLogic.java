@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class StandardLogic extends GameLogic {
-    private GraphicInterface graphicProvider;
-    private int numCols, numRows;
-    private Player player1, player2, currentPlayer;
-    private Board myBoard;
+public class StandardLogic implements GameLogicInterface {
+    protected GraphicInterface graphicProvider;
+    protected int numCols, numRows;
+    protected Player player1, player2, currentPlayer;
+    protected Board myBoard;
     private ArrayList<Integer> lastPlay;
+
+    private boolean lastTurnSkipped = false;
 
     public StandardLogic(GraphicInterface gi, int row, int col) {
         lastPlay = new ArrayList<>();
@@ -39,45 +41,39 @@ public class StandardLogic extends GameLogic {
         player1 = p1;
         player2 = p2;
         currentPlayer = p1;
+        player1.setScore(2);
+        player2.setScore(2);
         this.setBoard();
     }
 
+
     public boolean gameEnded() {
-        return ((((getValidPositions(player1, this.myBoard)).isEmpty())
-			 && ((getValidPositions(player2, this.myBoard)).isEmpty())));
+        if(lastTurnSkipped) {
+            return true;
+        }
+        lastTurnSkipped = true;
+        return false;
     }
 
     public Player getWinner() {
         this.graphicProvider.displayBoard(myBoard);
-        char winner = '\0';
-        int winnerPoints = 0;
-        HashMap<Character, Integer> pointsPerPlayer = new HashMap<>();
-        //Counts the chars
-        for (int i = 0; i < this.myBoard.getNumRows() ; i++) {
-            for(int j = 0; j < this.numCols ; j++) {
-                char dummy = this.myBoard.getCellValue(i, j);
-                //Adds to the respective player's char
-                if(pointsPerPlayer.containsKey(dummy)) {
-                    pointsPerPlayer.put(dummy, pointsPerPlayer.get(dummy) + 1);
-                } else {
-                    pointsPerPlayer.put(dummy, 0);
-                }
-                if(dummy != ' ' && pointsPerPlayer.get(dummy) > winnerPoints) {
-                    winner = dummy;
-                    winnerPoints = pointsPerPlayer.get(dummy);
-                }
-            }
-        }
-        //If tie
-        if(pointsPerPlayer.get(player1.getPlayerIdChar()) == pointsPerPlayer.get(player2.getPlayerIdChar())) {
+        if(player1.getScore() == player2.getScore()) {
             return null;
         }
-        //No tie
-        else if(winner == player1.getPlayerIdChar()) {
+        if(player1.getScore() > player2.getScore()) {
             return player1;
-        } else {
-            return player2;
         }
+        return player2;
+    }
+
+    public void makeMove(int r, int c) {
+        currentPlayer.setScore(currentPlayer.getScore() + 1);
+        Cell dummy = new Cell(r, c, ' ');
+        this.convertAndSpread(this.myBoard, dummy, currentPlayer);
+        this.graphicProvider.displayPlayer(currentPlayer);
+        this.graphicProvider.displayMessage(" played ");
+        this.graphicProvider.displayCoordinate(r, c);
+        this.graphicProvider.displayMessage("\n");
     }
 
     public void playNextTurn() {
@@ -89,40 +85,30 @@ public class StandardLogic extends GameLogic {
             //Saves the valid play
             lastPlay.add(0, playerChoice.get(0));
             lastPlay.add(1, playerChoice.get(1));
-            Cell dummy = new Cell(playerChoice.get(0), playerChoice.get(1), ' ');
-            for (int i = 0; i < validPositions.size(); i++) {
-                if ((validPositions.get(i).getXCord() == playerChoice.get(0)) && (validPositions.get(i).getYCord() ==                             playerChoice.get(1))) {
-                    this.convertAndSpread(this.myBoard, dummy, currentPlayer);
-                    this.graphicProvider.displayPlayer(currentPlayer);
-                    this.graphicProvider.displayMessage(" played ");
-                    this.graphicProvider.displayCoordinate(playerChoice.get(0), playerChoice.get(1));
-                    this.graphicProvider.displayMessage("\n");
-                }
-            }
-
-            if (this.currentPlayer == this.player1) {
-                this.currentPlayer = player2;
-            } else {
-                this.currentPlayer = player1;
-            }
+            makeMove(playerChoice.get(0), playerChoice.get(1));
+            lastTurnSkipped = false;
         } else {
             currentPlayer.outOfPlays();
-            if (this.currentPlayer == this.player1) {
-                this.currentPlayer = player2;
-            } else {
-                this.currentPlayer = player1;
-            }
+            lastTurnSkipped = true;
+        }
+        changeTurns();
+    }
+
+    public void changeTurns() {
+        if (this.currentPlayer == this.player1) {
+            this.currentPlayer = player2;
+        } else {
+            this.currentPlayer = player1;
         }
     }
 
 
-
     public Board setBoard() {
         this.myBoard = new Board(this.numRows, this.numCols);
-            this.myBoard.getCell(myBoard.getNumRows() / 2 - 1, myBoard.getNumRows() / 2 - 1).setValue('X');
-            myBoard.getCell(myBoard.getNumRows() / 2, myBoard.getNumCol() / 2).setValue('X');
-            myBoard.getCell(myBoard.getNumRows() / 2 - 1, myBoard.getNumCol() / 2).setValue('O');
-            myBoard.getCell(myBoard.getNumRows() / 2, myBoard.getNumRows() / 2 - 1).setValue('O');
+        this.myBoard.getCell(myBoard.getNumRows() / 2 - 1, myBoard.getNumRows() / 2 - 1).setValue('X');
+        myBoard.getCell(myBoard.getNumRows() / 2, myBoard.getNumCol() / 2).setValue('X');
+        myBoard.getCell(myBoard.getNumRows() / 2 - 1, myBoard.getNumCol() / 2).setValue('O');
+        myBoard.getCell(myBoard.getNumRows() / 2, myBoard.getNumRows() / 2 - 1).setValue('O');
         return (this.myBoard);
     }
 
@@ -190,7 +176,6 @@ public class StandardLogic extends GameLogic {
                 keepChecking = false;
                 conversionPath.clear();
             } else if(c.getValue() == target) { //If target acquired
-//                conversionPath.add(c);
                 keepChecking = false;
             } else {
                 conversionPath.add(c);
@@ -198,6 +183,17 @@ public class StandardLogic extends GameLogic {
         }
         return conversionPath;
     }
+
+    @Override
+    public int getPlayerOneScore() {
+        return player1.getScore();
+    }
+
+    @Override
+    public int getPlayerTwoScore() {
+        return player2.getScore();
+    }
+
 
     public ArrayList<Cell> getValidPositions(Player player, Board gameBoard) {
         ArrayList<Cell> validPositions = new ArrayList<>();
@@ -212,7 +208,6 @@ public class StandardLogic extends GameLogic {
 
             }
         }
-//        Collections.sort(validPositions);
         return validPositions;
     }
 
@@ -278,6 +273,7 @@ public class StandardLogic extends GameLogic {
     //propagateConversion subroutine
     public void convertPath(ArrayList<Cell> path, char value, Board gameBoard) {
         if(!path.isEmpty()) {
+            updateScore(path.size());
             for (int i = 0; i < (path.size()); i++) {
                 Cell c = path.get(i);
                 gameBoard.setCell(c.getXCord(),c.getYCord(), value);
@@ -298,4 +294,13 @@ public class StandardLogic extends GameLogic {
         return this.currentPlayer.getPlayerIdChar();
     }
 
+    private void updateScore(int score) {
+        if(currentPlayer == player1) {
+            player1.setScore(player1.getScore() + score);
+            player2.setScore(player2.getScore() - score);
+        } else {
+            player1.setScore(player1.getScore() - score);
+            player2.setScore(player2.getScore() + score);
+        }
+    }
 }

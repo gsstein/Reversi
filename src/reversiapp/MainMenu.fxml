@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox id="root" fx:id="root" alignment="CENTER" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversiapp.MainMenuController">
+   
+   <children>
+      <Button fx:id="playGameButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="133.0" text="Play Game">
+         <HBox.margin>
+            <Insets bottom="30.0" right="30.0" top="80.0" />
+         </HBox.margin>
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Button fx:id="settingsButton" mnemonicParsing="false" prefHeight="49.0" prefWidth="135.0" text="Settings" onAction="#openSettingsMenu">
+         <HBox.margin>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="80.0" />
+         </HBox.margin>
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Button fx:id="quitButton" mnemonicParsing="false" prefHeight="52.0" prefWidth="97.0" text="Quit">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <HBox.margin>
+            <Insets bottom="30.0" top="80.0" />
+         </HBox.margin></Button>
+   </children>
+   <opaqueInsets>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </padding>
+   <HBox.margin>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </HBox.margin>
+
+</HBox>

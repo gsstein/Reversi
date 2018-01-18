@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HumanPlayer extends Player implements PlayerInterface {
-    GameLogic gameLogic;
+    GameLogicInterface gameLogic;
     GraphicInterface display;
     char value;
 
-    public HumanPlayer(GameLogic gl, GraphicInterface gi, char v) {
+    public HumanPlayer(GameLogicInterface gl, GraphicInterface gi, char v) {
         gameLogic = gl;
         display = gi;
         value = v;
@@ -65,7 +65,6 @@ public class HumanPlayer extends Player implements PlayerInterface {
     }
 
     public void outOfPlays() {
-        display.displayPlayer(this);
-        display.displayMessage("\nYou are out of plays!\n");
+        display.displayMessage(this.getPlayerIdChar() + ", you are out of plays!\n");
     }
 }
