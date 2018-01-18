@@ -2,25 +2,17 @@ package reversiapp;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-/**
- * Created by gavriella on 1/16/18.
- */
 
 public class SettingsMenuController extends HBox implements Initializable {
     @FXML
@@ -42,6 +34,9 @@ public class SettingsMenuController extends HBox implements Initializable {
     private int boardSize = 8;
     private HashMap<String, Pair<String,String>> pairToToken = new HashMap<>();
 
+    /**
+     *
+     */
     private void setSizeButtons() {
         x4.setUserData(4);
         x6.setUserData(6);
@@ -61,6 +56,9 @@ public class SettingsMenuController extends HBox implements Initializable {
         });
     }
 
+    /**
+     * Maps token buttons to their images
+     */
     private void  setTokenButtons() {
         black_white.setUserData("black and white");
         pairToToken.put((String)black_white.getUserData(), new Pair<String,String>("images/blackPiece.png", "images/whitePiece.png"));
@@ -86,6 +84,10 @@ public class SettingsMenuController extends HBox implements Initializable {
             }
         });
     }
+
+    /**
+     *
+     */
     private void  setPlayerOrderButtons() {
         standardOrder.setUserData(1);
         inverseOrder.setUserData(2);
@@ -98,6 +100,10 @@ public class SettingsMenuController extends HBox implements Initializable {
         });
     }
 
+    /**
+     * Writes the settings to the file
+     * @param fileName
+     */
     public void writeSettings(File fileName) {
         try {
             OutputStreamWriter streamWriter = new OutputStreamWriter(new FileOutputStream(fileName));
@@ -116,6 +122,8 @@ public class SettingsMenuController extends HBox implements Initializable {
             System.exit(-1);
         }
     }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

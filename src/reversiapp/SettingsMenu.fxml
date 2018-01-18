@@ -30,17 +30,17 @@
                   <Insets top="10.0" />
                </padding>
             </RadioButton>
-            <RadioButton fx:id="black_white" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" selected="true" text="Black/White" toggleGroup="$colorToggleGroup">
+            <RadioButton fx:id="black_white" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" text="Black/White" toggleGroup="$colorToggleGroup">
                <padding>
                   <Insets top="10.0" />
                </padding>
             </RadioButton>
-            <RadioButton fx:id="star_wars" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" selected="true" text="StarWars" toggleGroup="$colorToggleGroup">
+            <RadioButton fx:id="star_wars" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" text="StarWars" toggleGroup="$colorToggleGroup">
                <padding>
                   <Insets top="10.0" />
                </padding>
             </RadioButton>
-            <RadioButton fx:id="pink_blue" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" selected="true" text="Pink/Blue" toggleGroup="$colorToggleGroup">
+            <RadioButton fx:id="pink_blue" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" text="Pink/Blue" toggleGroup="$colorToggleGroup">
                <padding>
                   <Insets top="10.0" />
                </padding>
@@ -80,7 +80,7 @@
                   <Insets top="10.0" />
                </padding>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" selected="true" text="8x8" toggleGroup="$boardSizeToggleGroup" fx:id="x8">
+            <RadioButton mnemonicParsing="false" text="8x8" toggleGroup="$boardSizeToggleGroup" fx:id="x8">
                <padding>
                   <Insets top="10.0" />
                </padding>
@@ -133,7 +133,7 @@
                   <Insets top="20.0" />
                </padding>
             </Label>
-            <RadioButton fx:id="standardOrder" mnemonicParsing="false" selected="true" text="Player1/Player2">
+            <RadioButton fx:id="standardOrder" mnemonicParsing="false" text="Player1/Player2">
                <padding>
                   <Insets top="10.0" />
                </padding>

@@ -20,7 +20,7 @@ public class MachinePlayer extends Player {
     public ArrayList<Integer> makeMove() {
         //Print moves
         graphicProvider.displayMessage("It's");
-        graphicProvider.displayPlayer(this);
+        graphicProvider.displayMessage(Character.toString(this.getPlayerIdChar()));
         graphicProvider.displayMessage("'s turn\n");
         return findBestMove();
     }
@@ -104,7 +104,7 @@ public class MachinePlayer extends Player {
     }
 
     public void outOfPlays() {
-        this.graphicProvider.displayPlayer(this);
+        this.graphicProvider.displayMessage(Character.toString(this.getPlayerIdChar()));
         this.graphicProvider.displayMessage("\nYou are out of plays!\n");
     }
 }

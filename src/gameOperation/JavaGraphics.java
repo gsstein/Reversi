@@ -1,53 +1,37 @@
 package gameOperation;
-import javafx.scene.layout.BorderPane;
-import reversiapp.BoardController;
+
 import reversiapp.GameWindowController;
 
 import java.util.ArrayList;
 
-/**
- * Created by dan on 1/13/18.
- */
+
 public class JavaGraphics implements GraphicInterface {
     //Members
     private GameWindowController gameWindowController;
 
-    public JavaGraphics() {
-
-    }
-
+    /**
+     * Receives game window controller object
+     * @param gwc
+     */
     public void getGameWindow(GameWindowController gwc) {
         gameWindowController = gwc;
     }
 
-    @Override
-    public void displayBoard(Board b) {
-        //not in use
+
+    /**
+     * Calls the game window controller to show the available board and moves
+     * @param availablePositions
+     * @param b
+     */
+    public void fullDisplay(ArrayList<Cell> availablePositions, Board b) {
+        gameWindowController.displayBoard(b, availablePositions);
     }
 
-    @Override
-    //Paints the available Cells red
-    public void displayMoves(ArrayList<Cell> availablePositions, Board b) {
-        gameWindowController.showMoves(b, availablePositions);
-    }
-
-    @Override
+    /**
+     * Calls the game window controller to show the message
+     * @param message
+     */
     public void displayMessage(String message) {
         gameWindowController.showMessage(message);
-    }
-
-    @Override
-    public void displayMessage(char message) {
-
-    }
-
-    @Override
-    public void displayPlayer(Player player) {
-
-    }
-
-    @Override
-    public void displayCoordinate(int a, int b) {
-        //Not in use
     }
 }

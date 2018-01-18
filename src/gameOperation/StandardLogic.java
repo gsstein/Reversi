@@ -56,7 +56,7 @@ public class StandardLogic implements GameLogicInterface {
     }
 
     public Player getWinner() {
-        this.graphicProvider.displayBoard(myBoard);
+        this.graphicProvider.fullDisplay(null, myBoard);
         if(player1.getScore() == player2.getScore()) {
             return null;
         }
@@ -70,16 +70,19 @@ public class StandardLogic implements GameLogicInterface {
         currentPlayer.setScore(currentPlayer.getScore() + 1);
         Cell dummy = new Cell(r, c, ' ');
         this.convertAndSpread(this.myBoard, dummy, currentPlayer);
-        this.graphicProvider.displayPlayer(currentPlayer);
-        this.graphicProvider.displayMessage(" played ");
-        this.graphicProvider.displayCoordinate(r, c);
+        this.graphicProvider.displayMessage(Character.toString(currentPlayer.getPlayerIdChar()));
+        this.graphicProvider.displayMessage(" played (");
+        this.graphicProvider.displayMessage(Integer.toString(r));
+        this.graphicProvider.displayMessage(" ,");
+        this.graphicProvider.displayMessage(Integer.toString(c));
+        this.graphicProvider.displayMessage(")");
         this.graphicProvider.displayMessage("\n");
     }
 
     public void playNextTurn() {
-//        this.graphicProvider.displayMessage("Current board:\n\n");
-        this.graphicProvider.displayBoard(myBoard);
+        this.graphicProvider.displayMessage("Current board:\n\n");
         ArrayList<Cell> validPositions = this.getValidPositions(this.currentPlayer, this.myBoard);
+        graphicProvider.fullDisplay(validPositions, myBoard);
         if(!validPositions.isEmpty()) {
             ArrayList<Integer> playerChoice = currentPlayer.makeMove();
             //Saves the valid play
@@ -246,7 +249,7 @@ public class StandardLogic implements GameLogicInterface {
 
     public void endGame() {
         Player winner = getWinner();
-        this.graphicProvider.displayPlayer(winner);
+        this.graphicProvider.displayMessage(Character.toString(winner.getPlayerIdChar()));
         this.graphicProvider.displayMessage(" wins!\n");
     }
 

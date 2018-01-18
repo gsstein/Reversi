@@ -8,7 +8,14 @@ public class ConsoleGraphics implements GraphicInterface {
 
     }
 
-    @Override
+    public void fullDisplay(ArrayList<Cell> availablePositions, Board b) {
+        displayBoard(b);
+        if(!(availablePositions == null || availablePositions.isEmpty())) {
+            System.out.print("Your possible moves: ");
+            displayMoves(availablePositions, b);
+        }
+    }
+
     public void displayBoard(Board b) {
         //Prints the top numbers
         System.out.print(" |");
@@ -37,7 +44,6 @@ public class ConsoleGraphics implements GraphicInterface {
         }
     }
 
-    @Override
     public void displayMoves(ArrayList<Cell> availablePositions, Board board) {
         System.out.println("");
         for (int i= 0; i < availablePositions.size(); i++) {
@@ -46,17 +52,14 @@ public class ConsoleGraphics implements GraphicInterface {
         System.out.println("");
     }
 
-    @Override
     public void displayMessage(String message) {
         System.out.print(message);
     }
 
-    @Override
     public void displayMessage(char message) {
         System.out.print(message);
     }
 
-    @Override
     public void displayPlayer(Player player) {
         if (player == null) {
             System.out.println("Congratulations to both players!\n" + "It was a tie.");
@@ -65,7 +68,6 @@ public class ConsoleGraphics implements GraphicInterface {
         }
     }
 
-    @Override
     public void displayCoordinate(int a, int b) {
         System.out.println("(" + a + "," + b + ")");
     }

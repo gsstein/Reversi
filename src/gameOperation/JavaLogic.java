@@ -18,15 +18,16 @@ public class JavaLogic extends StandardLogic {
     public void playNextTurn() {
         ArrayList<Cell> validPositions = this.getValidPositions(this.currentPlayer, this.myBoard);
         if(validPositions.isEmpty()) { //Iterate over skipped turn
-            currentPlayer.outOfPlays();
             if(gameEnded()) {
                 endGame();
+                graphicProvider.fullDisplay(validPositions, myBoard);
+                return;
             }
             changeTurns();
             playNextTurn();
         } else {
             lastTurnSkipped = false;
-            graphicProvider.displayMoves(validPositions, myBoard);
+            graphicProvider.fullDisplay(validPositions, myBoard);
         }
         //Ends, waits for GUI to call makeMove
     }
@@ -39,6 +40,13 @@ public class JavaLogic extends StandardLogic {
         this.convertAndSpread(this.myBoard, c, currentPlayer);
         changeTurns();
         playNextTurn();
+    }
+
+    @Override
+    public void endGame() {
+        Player winner = getWinner();
+        this.graphicProvider.displayMessage(Character.toString(winner.getPlayerIdChar()));
+        this.graphicProvider.displayMessage(" wins!\n");
     }
 
 }
