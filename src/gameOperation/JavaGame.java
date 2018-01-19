@@ -1,7 +1,5 @@
 package gameOperation;
 
-
-
 public class JavaGame extends Game {
     private JavaLogic javaLogic;
     private JavaGraphics javaGraphics;
@@ -17,6 +15,9 @@ public class JavaGame extends Game {
     }
 
     @Override
+    /**
+     * starts the first turn
+     */
     public void start() {
         HumanPlayer p1 = new HumanPlayer(javaLogic, javaGraphics, 'X');
         HumanPlayer p2 = new HumanPlayer(javaLogic, javaGraphics, 'O');

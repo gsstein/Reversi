@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 public class ConsoleGraphics implements GraphicInterface {
 
-    public ConsoleGraphics() {
-
-    }
 
     public void fullDisplay(ArrayList<Cell> availablePositions, Board b) {
         displayBoard(b);
@@ -16,7 +13,7 @@ public class ConsoleGraphics implements GraphicInterface {
         }
     }
 
-    public void displayBoard(Board b) {
+    private void displayBoard(Board b) {
         //Prints the top numbers
         System.out.print(" |");
         for (int j = 0; j < b.getNumCol(); j++ ) {
@@ -56,9 +53,10 @@ public class ConsoleGraphics implements GraphicInterface {
         System.out.print(message);
     }
 
-    public void displayMessage(char message) {
-        System.out.print(message);
+    public void displayPlayer(char player) {
+        System.out.print(player);
     }
+
 
     public void displayPlayer(Player player) {
         if (player == null) {
@@ -68,7 +66,4 @@ public class ConsoleGraphics implements GraphicInterface {
         }
     }
 
-    public void displayCoordinate(int a, int b) {
-        System.out.println("(" + a + "," + b + ")");
-    }
 }

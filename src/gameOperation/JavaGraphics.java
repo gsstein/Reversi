@@ -34,4 +34,12 @@ public class JavaGraphics implements GraphicInterface {
     public void displayMessage(String message) {
         gameWindowController.showMessage(message);
     }
+
+    @Override
+    public void displayPlayer(char player) {
+        gameWindowController.displayPlayer(player);
+    }
+
+
+
 }

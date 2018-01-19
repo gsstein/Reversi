@@ -49,6 +49,7 @@ public class BoardController extends GridPane {
         } catch(Exception e) {
             throw new RuntimeException(e);
         }
+
     }
 
     /**

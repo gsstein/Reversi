@@ -37,12 +37,18 @@ public class MainMenuController implements Initializable {
 
 
     @Override
+    /**
+     * set the root and set button behavior
+     */
     public void initialize(URL location, ResourceBundle resources) {
         root.setId("main_menu");
         setButtonBehaviour();
     }
 
     @FXML
+    /**
+     * open the settings scene
+     */
     private void openSettingsMenu() {
         Stage window = new Stage();
         try {
@@ -60,6 +66,9 @@ public class MainMenuController implements Initializable {
 
     }
 
+    /**
+     * sets button behavior
+     */
     private void setButtonBehaviour() {
         playGameButton.setOnAction(e->
             startGame());
@@ -68,6 +77,9 @@ public class MainMenuController implements Initializable {
             System.exit(0));
     }
 
+    /**
+     * creates the scene
+     */
     private void startGame() {
         Stage window = (Stage) root.getScene().getWindow();
         try {
@@ -84,6 +96,10 @@ public class MainMenuController implements Initializable {
         }
     }
 
+    /**
+     * initiates game
+     * @param gwc
+     */
     public void createGame(GameWindowController gwc) {
         JavaGraphics graphics = new JavaGraphics();
         graphics.getGameWindow(gwc);
@@ -99,6 +115,12 @@ public class MainMenuController implements Initializable {
         game.start();
     }
 
+    /**
+     * Gets board size from file
+     * @param fileName
+     * @return
+     * @throws IOException
+     */
     private int getSizeFromFile(File fileName) throws IOException {
         String stringBuffer = "";
         try {

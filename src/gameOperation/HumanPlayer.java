@@ -39,7 +39,7 @@ public class HumanPlayer extends Player implements PlayerInterface {
         ArrayList<Cell> validMoves;
         validMoves = gameLogic.getValidPositions(this, gameLogic.getBoard());
         //Print moves
-        display.displayMessage(Character.toString(this.getPlayerIdChar()));
+        display.displayPlayer(playerIdChar);
         display.displayMessage(": it's your move.\nYour possible moves: ");
         display.fullDisplay(validMoves, gameLogic.getBoard());
 
@@ -66,5 +66,9 @@ public class HumanPlayer extends Player implements PlayerInterface {
 
     public void outOfPlays() {
         display.displayMessage("Skipped turn");
+    }
+
+    public void displayPlayer() {
+
     }
 }

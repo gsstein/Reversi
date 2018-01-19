@@ -13,7 +13,7 @@
          <children>
             <Label text="Score" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -21,9 +21,12 @@
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="playerOneToken" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <!--<image>-->
+                        <!--<Image url="@images/blackPiece.png" />-->
+                     <!--</image>-->
                      <HBox.margin>
-                        <Insets top="10.0" />
+                        <Insets left="20.0" top="20.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label fx:id="playerOneScore" text="0" textAlignment="CENTER">
@@ -31,16 +34,16 @@
                         <Insets left="20.0" top="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font size="19.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="playerTwoToken" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
-                        <Insets top="10.0" />
+                        <Insets left="20.0" top="20.0" />
                      </HBox.margin>
                   </ImageView>
                   <Label fx:id="playerTwoScore" text="0">
@@ -48,22 +51,30 @@
                         <Insets left="20.0" top="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font size="19.0" />
+                        <Font size="17.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="messageLabel" wrapText="true">
+            <ImageView fx:id="msgPlayer" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
-                  <Insets top="10.0" />
+                  <Insets left="20.0" top="20.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label fx:id="messageLabel" prefHeight="26.0" prefWidth="112.0" wrapText="true">
+               <HBox.margin>
+                  <Insets top="25.0" />
                </HBox.margin>
                <font>
                   <Font size="15.0" />
                </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </Label>
          </children>
       </HBox>
@@ -77,6 +88,6 @@
       <Insets />
    </opaqueInsets>
    <padding>
-      <Insets left="500.0" />
+      <Insets left="550.0" />
    </padding>
 </fx:root>

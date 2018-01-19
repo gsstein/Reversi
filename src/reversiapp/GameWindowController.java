@@ -24,7 +24,7 @@ public class GameWindowController extends BorderPane {
     private int rowsAndColumnSize;
 
     /**
-     *
+     * Loads fxml and initiates side panel controller and board controller
      */
     public GameWindowController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameWindow.fxml"));
@@ -50,6 +50,7 @@ public class GameWindowController extends BorderPane {
 
         handleResize();
     }
+
     /**
      * To allow smooth resizing
      */
@@ -123,6 +124,7 @@ public class GameWindowController extends BorderPane {
         javaLogic = logic;
     }
 
+
     /**
      * Tells board control to display the board
      * Updates moves
@@ -132,6 +134,10 @@ public class GameWindowController extends BorderPane {
     public void displayBoard(Board board, ArrayList<Cell> availablePositions) {
         gameBoard.displayBoard(board, availablePositions);
         updateScores();
+    }
+
+    public void displayPlayer(char player) {
+        sidePanel.setMessageToken(player);
     }
 
     /**

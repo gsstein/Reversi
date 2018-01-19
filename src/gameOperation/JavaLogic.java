@@ -15,6 +15,9 @@ public class JavaLogic extends StandardLogic {
 
 
     @Override
+    /**
+     * calculates the next board and displays it
+     */
     public void playNextTurn() {
         ArrayList<Cell> validPositions = this.getValidPositions(this.currentPlayer, this.myBoard);
         if(validPositions.isEmpty()) { //Iterate over skipped turn
@@ -33,6 +36,9 @@ public class JavaLogic extends StandardLogic {
     }
 
     @Override
+    /**
+     * calculates the knew board from the input, and plays next turn
+     */
     public void makeMove(int i, int j) {
         //Make the move
         currentPlayer.setScore(currentPlayer.getScore() + 1);
@@ -43,9 +49,12 @@ public class JavaLogic extends StandardLogic {
     }
 
     @Override
+    /**
+     * displays the winner
+     */
     public void endGame() {
         Player winner = getWinner();
-        this.graphicProvider.displayMessage(Character.toString(winner.getPlayerIdChar()));
+        this.graphicProvider.displayPlayer(winner.getPlayerIdChar());
         this.graphicProvider.displayMessage(" wins!\n");
     }
 
